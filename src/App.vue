@@ -1,23 +1,29 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import TaskList from './components/TaskList.vue'
-import { Task } from './models/task'
+import { Task } from './types/task'
 
 const tasks = ref<Task[]>([
    {
       id: '1',
       detail: 'Buy some milk',
       done: false,
+      created_at: new Date(),
+      updated_at: new Date(),
    },
    {
       id: '2',
       detail: 'Play tailwind',
       done: true,
+      created_at: new Date(),
+      updated_at: new Date(),
    },
    {
       id: '3',
       detail: 'Learning golang',
       done: false,
+      created_at: new Date(),
+      updated_at: new Date(),
    },
 ])
 </script>

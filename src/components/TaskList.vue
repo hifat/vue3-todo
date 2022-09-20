@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Task } from "../models/task"
+import { Task } from "../types/task"
 
 defineProps<{ tasks: Array<Task> }>()
 </script>
@@ -23,9 +23,3 @@ defineProps<{ tasks: Array<Task> }>()
       </div>
    </div>
 </template>
-
-<style scoped>
-.read-the-docs {
-   color: #888;
-}
-</style>

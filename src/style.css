@@ -19,7 +19,7 @@ body, html {
 }
 
 .item-list {
-   @apply flex justify-between text-lg px-3 py-4 rounded-xl ease-in duration-200 hover:bg-yellow-100
+   @apply flex justify-between text-lg px-3 py-4 rounded-xl ease-in duration-300 hover:bg-yellow-100
 }
 
 .btn {
