@@ -23,15 +23,27 @@ body, html {
 }
 
 .btn {
-   @apply bg-white border-2 rounded-full w-[30px] h-[30px]
+   @apply bg-white border-2
+}
+
+.btn-pill {
+   @apply rounded-full w-[30px] h-[30px]
 }
 
 .btn-outline-butter {
    @apply border-yellow-400 text-yellow-400 ease-in duration-200
 }
 
-.btn-butter.btn-active, .btn-butter:hover {
+.btn-outline-butter.btn-active, .btn-outline-butter:hover {
    @apply bg-yellow-400 text-white ease-in duration-200
+}
+
+.btn-butter.btn-active, .btn-butter:hover {
+   @apply bg-yellow-300 ease-in duration-200
+}
+
+.btn-butter {
+   @apply bg-yellow-200 border-yellow-500 rounded-lg px-2 py-1
 }
 
 .form-control {

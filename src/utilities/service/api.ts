@@ -64,7 +64,7 @@ export const request = async (method: string, url: string, data: object = {}, al
    try {
       const token = TokenService.getToken()
 
-      axios.defaults.baseURL = process.env.VITE_API_APP_URL
+      axios.defaults.baseURL = import.meta.env.VITE_API_APP_URL
       axios.defaults.headers.common['Content-Type'] = 'multipart/form-data'
 
       if (token) {

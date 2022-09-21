@@ -34,9 +34,11 @@ export const useTaskStore = defineStore('tasks', {
             this.errors = res.error
          }
       },
-      async getTasks() {
+      async queryTasks() {
          const res = await TaskAPI.get()
-         this.tasks = res.tasks
+         if(res.tasks) {
+            this.tasks = res.tasks
+         }
       },
       async showTask(id: string) {
          const res = await TaskAPI.show(id)
