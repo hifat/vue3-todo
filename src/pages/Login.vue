@@ -1,19 +1,22 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { Login } from '../types/auth'
+import { ref } from 'vue'
+import { Credentials } from '../types/auth'
+import { useAuthStore } from '../stores/auth';
 
-const formData = ref<Login>({
+const formData = ref<Credentials>({
    username: '',
    password: '',
 })
 
-function onSubmit() {
-   console.log(formData.value)
+const authStore = useAuthStore()
+
+async function onSubmit() {
+   await authStore.login(formData.value)
 }
 </script>
 
 <template>
-   <h2 class="mt-10 md:mt-28 text-center text-4xl text-bold">Vue3 Todo Login</h2>
+   <h2 class="pt-10 md:pt-28 text-center text-4xl text-bold">Vue3 Todo Login</h2>
    <div class="flex justify-center">
       <form @submit.prevent="onSubmit">
          <div class="mt-6 p-12 bg-yellow-400 rounded-lg">

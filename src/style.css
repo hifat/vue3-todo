@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-body, html {
-   @apply bg-yellow-200
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+}
+
+body, html, #app {
+   @apply w-full h-full bg-yellow-200
 }
 
 .card {

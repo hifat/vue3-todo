@@ -1,6 +1,6 @@
 import axios, { AxiosResponse, AxiosError } from 'axios'
 import * as TokenService from './token'
-import { swalFire } from '../helper/alert'
+import { swalFire } from '../../utilities/helper/alert'
 import { DataError, RequestError, ApiError } from '../../types/api'
 
 const requestError = (status: number, data: DataError): RequestError => {
@@ -62,7 +62,7 @@ const requestError = (status: number, data: DataError): RequestError => {
  */
 export const request = async (method: string, url: string, data: object = {}, alert401: boolean = true): Promise<any> => {
    try {
-      const token = TokenService.getToken()
+      const token = TokenService.getAccessToken()
 
       axios.defaults.baseURL = import.meta.env.VITE_API_APP_URL
       axios.defaults.headers.common['Content-Type'] = 'multipart/form-data'

@@ -1,12 +1,12 @@
-export type Username = {
+export type AuthUser = {
    id: string
    username: string
-   name: boolean
+   name: string
    created_at: Date | null,
    updated_at: Date | null,
 }
 
-export type Login = {
+export type Credentials = {
    username: string
    password: string
 }

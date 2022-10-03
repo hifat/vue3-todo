@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { Task, NewTask, NewTaskResponse, UpdateTask, UpdateTaskResponse } from '../types/task'
 
-import * as TaskAPI from '../utilities/service/task'
+import * as TaskService from '../common/service/task'
 
 interface TaskState {
    tasks: Task[]
@@ -24,10 +24,11 @@ export const useTaskStore = defineStore('tasks', {
    getters: {
       getTasks: (state) => state.tasks,
       getshowTask: (state) => state.showTask,
+      getErrors: (state) => state.errors,
    },
    actions: {
       async createTask(data: NewTask) {
-         const res = await TaskAPI.create(data)
+         const res = await TaskService.create(data)
          if (res.result) {
             this.tasks.push(res.task)
          } else {
@@ -35,17 +36,17 @@ export const useTaskStore = defineStore('tasks', {
          }
       },
       async queryTasks() {
-         const res = await TaskAPI.get()
+         const res = await TaskService.get()
          if(res.tasks) {
             this.tasks = res.tasks
          }
       },
       async showTask(id: string) {
-         const res = await TaskAPI.show(id)
+         const res = await TaskService.show(id)
          this.showTask = res.task
       },
       async updateTask(id: string, data: UpdateTask) {
-         const res = await TaskAPI.update(id, data)
+         const res = await TaskService.update(id, data)
          if(res.result) {
             this.tasks.map((task, index) => {
                if(task.id === id) {
@@ -57,7 +58,7 @@ export const useTaskStore = defineStore('tasks', {
          }
       },
       async destroyTask(id: string) {
-         const res = await TaskAPI.destroy(id)
+         const res = await TaskService.destroy(id)
          if(res.result) {
             this.tasks.filter(task => task.id === id)
          } else {

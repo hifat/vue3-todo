@@ -1,5 +1,5 @@
 import { request } from './api'
-import { Task, NewTask, UpdateTask } from '../../types/task'
+import { NewTask, UpdateTask } from '../../types/task'
 
 export const get = async (): Promise<any> => {
    return await request('get', '/api/tasks')
