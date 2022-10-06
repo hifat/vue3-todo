@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { AuthUser, Credentials } from '../types/auth'
 import * as AuthService from "../common/service/auth"
 import * as TokenService from "../common/service/token"
+import router from '../routers'
 
 interface AuthState {
    isAuth: boolean
@@ -34,11 +35,13 @@ export const useAuthStore = defineStore('auth', {
             this.authUser = {
                ...this.authUser,
                ...res.auth.user,
-               isAuth: true,
             }
+            this.isAuth = true
    
             TokenService.saveRefreshToken(res.auth.refresh_token)
             TokenService.saveAccessToken(res.auth.access_token)
+
+            router.push({ name: 'Task' })
          } else {
             this.errors = res.error
          }
